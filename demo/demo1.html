@@ -1,0 +1,75 @@
+<body>
+<meta charset="utf-8">
+    <!-- 为 ECharts 准备一个具备大小（宽高）的 DOM -->
+    <div id="main" style="width: 600px;height:400px;"></div>
+
+<script src="../echarts.js">
+</script>
+</body>
+<script>
+var myChart = echarts.init(document.getElementById('main'));
+
+
+var option = {
+   backgroundColor: '#2c343c',
+   textStyle: {
+        color: 'rgba(255, 255, 255, 0.3)'
+    },
+itemStyle: {
+    normal: {
+        // 设置扇形的颜色
+        color: '#c23531',
+        shadowBlur: 200,
+        shadowColor: 'rgba(0, 0, 0, 0.5)'
+    },
+	emphasis:{
+	color:'yellow',
+	shadowBlur: 200,
+    shadowColor: 'rgba(0, 0, 0, 0.5)'
+	}
+},
+visualMap: {
+    // 不显示 visualMap 组件，只用于明暗度的映射
+    show: true,
+    // 映射的最小值为 80
+    min: 80,
+    // 映射的最大值为 600
+    max: 600,
+    inRange: {
+        // 明暗度的范围是 0 到 1
+        colorLightness: [0, 1]
+    }
+},
+    series : [
+        {
+            name: '访问来源',
+            type: 'pie',
+            radius: '50%',
+			roseType:'angle',
+            data:[
+			
+    {value:400,
+    name:'搜索引擎',
+    itemStyle: {
+        normal: {
+            
+        }
+    }},
+
+			
+			
+                
+                {value:335,itemStyle: {
+        normal: {
+           
+        }
+    }, name:'直接访问'},
+                {value:310, name:'邮件营销'},
+                {value:274, name:'联盟广告'},
+                {value:235, name:'视频广告'}
+            ]
+        }
+    ]
+};
+myChart.setOption(option);
+</script>
